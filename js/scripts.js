@@ -15,7 +15,7 @@ function generatePin() {
     document.getElementById('pin-generate-display').value = pin;
 }
 
-// Key pad value captureing 
+// Key pad value captureing
 document.getElementById('key-pads').addEventListener('click', function name(event) {
     const keyValue = event.target.innerText
     const keyPadDisplay = document.getElementById('key-pad-display');
@@ -30,16 +30,24 @@ document.getElementById('key-pads').addEventListener('click', function name(even
     }
 })
 
-// Verify pin or matching pin function 
+// Verify pin or matching pin function
+let tryCount = 3;
+
 function verifyPin() {
     const pinGenerateDisplay = document.getElementById('pin-generate-display').value;
     const keyPressedDisplay = document.getElementById('key-pad-display').value;
 
-    if (pinGenerateDisplay == keyPressedDisplay) {
-        document.getElementById('notify-success').style.display = 'block';
-        document.getElementById('notify-fail').style.display = 'none';
-    } else {
-        document.getElementById('notify-fail').style.display = 'block';
-        document.getElementById('notify-success').style.display = 'none';
+    if (tryCount > 0) {
+        if (pinGenerateDisplay == keyPressedDisplay) {
+            document.getElementById('notify-success').style.display = 'block';
+            document.getElementById('notify-fail').style.display = 'none';
+        } else {
+            document.getElementById('notify-fail').style.display = 'block';
+            document.getElementById('notify-success').style.display = 'none';
+        }
+        tryCount--;
+        document.getElementById('try-count').innerText = tryCount;
     }
+
+
 }
