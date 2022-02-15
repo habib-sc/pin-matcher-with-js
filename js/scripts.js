@@ -9,7 +9,23 @@ function getPin() {
     }
 }
 
+// pin generate function and displaying generated pin 
 function generatePin() {
     const pin = getPin();
     document.getElementById('pin-generate-display').value = pin;
 }
+
+// Key pad value captureing 
+document.getElementById('key-pads').addEventListener('click', function name(event) {
+    const keyValue = event.target.innerText
+    const keyPadDisplay = document.getElementById('key-pad-display');
+    const previousKeyPadDisplay = keyPadDisplay.value;
+
+    if (isNaN(keyValue)) {
+        if (keyValue == 'C') {
+            keyPadDisplay.value = '';
+        }
+    } else {
+        keyPadDisplay.value = previousKeyPadDisplay + keyValue;
+    }
+})
