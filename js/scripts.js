@@ -38,16 +38,18 @@ function verifyPin() {
     const keyPressedDisplay = document.getElementById('key-pad-display').value;
 
     if (tryCount > 0) {
-        if (pinGenerateDisplay == keyPressedDisplay) {
-            document.getElementById('notify-success').style.display = 'block';
-            document.getElementById('notify-fail').style.display = 'none';
+        if (keyPressedDisplay != '') {
+            if (pinGenerateDisplay == keyPressedDisplay) {
+                document.getElementById('notify-success').style.display = 'block';
+                document.getElementById('notify-fail').style.display = 'none';
+            } else {
+                document.getElementById('notify-fail').style.display = 'block';
+                document.getElementById('notify-success').style.display = 'none';
+            }
+            tryCount--;
+            document.getElementById('try-count').innerText = tryCount;
         } else {
-            document.getElementById('notify-fail').style.display = 'block';
-            document.getElementById('notify-success').style.display = 'none';
+            alert('Please Input a Valid PIN!');
         }
-        tryCount--;
-        document.getElementById('try-count').innerText = tryCount;
     }
-
-
 }
