@@ -29,3 +29,17 @@ document.getElementById('key-pads').addEventListener('click', function name(even
         keyPadDisplay.value = previousKeyPadDisplay + keyValue;
     }
 })
+
+// Verify pin or matching pin function 
+function verifyPin() {
+    const pinGenerateDisplay = document.getElementById('pin-generate-display').value;
+    const keyPressedDisplay = document.getElementById('key-pad-display').value;
+
+    if (pinGenerateDisplay == keyPressedDisplay) {
+        document.getElementById('notify-success').style.display = 'block';
+        document.getElementById('notify-fail').style.display = 'none';
+    } else {
+        document.getElementById('notify-fail').style.display = 'block';
+        document.getElementById('notify-success').style.display = 'none';
+    }
+}
